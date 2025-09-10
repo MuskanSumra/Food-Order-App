@@ -7,7 +7,7 @@ export default function Meals() {
     
     useEffect(()=>{
         async function fetchMeals() {
-        const response = await fetch('https://localhost:5173/meals');
+        const response = await fetch('https://localhost:3000/meals');
 
         if (!response.ok) {
             //...
