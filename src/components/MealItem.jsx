@@ -1,3 +1,4 @@
+import { currencyFormatter } from "../util/formatting.js";
 export default function MealItem({ meal }) {
     return (
         <li className="meal-item">
@@ -6,7 +7,7 @@ export default function MealItem({ meal }) {
                 <div>
                     <h3>{meal.name}</h3>
                 <p className="meal-item-price">
-                    {meal.price}
+                    {currencyFormatter.format(meal.price)}
                     </p>
                     <p className="meal-item-description">{meal.description}</p>
                     </div>
