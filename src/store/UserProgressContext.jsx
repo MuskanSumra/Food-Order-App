@@ -1,9 +1,14 @@
 import { createContext } from "react";
 
 const UserProgressContext = createContext({
-    completedSteps: 0,
-    totalSteps: 0,
-    resetProgress: () => {}
+    progress: '',
+    showCart: ()=>{},
+    hideCart: ()=>{},
+    showCheckout: ()=>{},
+    hideCheckout: ()=>{}
 });
 
+export function UserProgressProvider({children}) {
+    
+}
 export default UserProgressContext;
