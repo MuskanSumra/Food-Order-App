@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import logoImg from '../assets/logo.jpg';
 import Button  from './UI/Button.jsx';
 import CartContext from '../store/CartContext.jsx';
-import { use } from 'react';
+
 export default function Header() {
   const cartCTx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
@@ -19,7 +19,7 @@ export default function Header() {
         <h1>FoodYouLove</h1>
         </div>
         <nav>
-            <Button textOnly>Cart ({totalCartItems})</Button>
+            <Button textOnly onClick={handleShowCart}>Cart ({totalCartItems})</Button>
         </nav>
         
     </header>
