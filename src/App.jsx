@@ -8,6 +8,8 @@ function App() {
     <CartContextProvider>
       <Header/>
       <Meals/>
+      <Cart/>
+      <Checkout/>
     </CartContextProvider>
   </UserProgressContextProvider>        
   );
