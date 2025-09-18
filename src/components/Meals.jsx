@@ -17,10 +17,10 @@ export default function Meals() {
 
     ]);
     if (isLoading) {
-        return <p>Fetching meals...</p>;
+        return <p className="center">Fetching meals...</p>;
     }
-    if(!loadedMeals){
-        return <p>No meals found.</p>
+    if (error) {
+        return <Error title="Failed to fetch meals!" message={error} />;
     }
     
   return (
