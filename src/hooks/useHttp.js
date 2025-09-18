@@ -13,15 +13,20 @@ async function sendHttpRequest(url,config){
     return resData;
 }
 //custom hook for sending http requests
-export default function useHttp(url,config){
-    const [data,setData]=useState();
+export default function useHttp(url,config,initialData){
+    const [data,setData]=useState(initialData);
     const [isLoading,setIsLoading]=useState(false);
     const [error,setError]=useState();
+
+    function clearData(){
+        setData(initialData);
+    }
     //useCallback to avoid infinite loop in useEffect
-    const sendRequest=useCallback(async function sendRequest(){
+    const sendRequest=useCallback(
+        async function sendRequest(data){
         setIsLoading(true);
         try{
-            const resData=await sendHttpRequest(url,config);
+            const resData=await sendHttpRequest(url,{...config,body: data});
             setData(resData);
         }catch(error){
             setError(error.message || 'Something went wrong!');
@@ -39,5 +44,6 @@ export default function useHttp(url,config){
         isLoading,
         error,
         sendRequest,
+        clearData
     }
 }
