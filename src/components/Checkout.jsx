@@ -40,7 +40,7 @@ export default function Checkout() {
         clearData();
      }
 
-     async function checkoutAction(fd){
+     async function checkoutAction(prevState,fd){
         const customerData=Object.fromEntries(fd.entries());
         
         await sendRequest(
@@ -52,7 +52,7 @@ export default function Checkout() {
             }));
     }
 
-    const [isSending] = useActionState(checkoutAction, null);
+    const [formState,formAction,isSending] = useActionState(checkoutAction, null);
 
     let actions=(
     <>
@@ -75,7 +75,7 @@ export default function Checkout() {
             </Modal>
     }
     return <Modal className="checkout" open={userProgressCtx.progress==='checkout'} onClose={handleClose}>
-        <form onSubmit={handleSubmit} action={checkoutAction}>
+        <form onSubmit={handleSubmit} action={formAction}>
             <h2>Checkout</h2>
             <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
             <Input label="Full Name" id="name" type="text" />
